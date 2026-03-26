@@ -15,7 +15,6 @@
     <meta property="og:title" content="Anita Home Care - Hazaribag's Premium Cleaning Store">
     <meta property="og:description" content="Get the best deals on Sava Handwash and Premium Phenyl. Order via WhatsApp for fast delivery in Hazaribag.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1584622781564-1d9876a13d00?w=600"> 
-    
 
     <script type="application/ld+json">
     {
@@ -52,7 +51,7 @@
         
         body { 
             margin: 0; 
-            padding-bottom: 80px; 
+            padding-bottom: 0; 
             background: var(--dark-bg);
             color: var(--text-main); 
             overflow-x: hidden; 
@@ -217,7 +216,17 @@
         </div>
     </div>
 
-    <div class="section-title">Find Us</div>
+    
+	<div class="section-title">About Anita Home Care</div>
+    <div style="margin: 0 15px 40px; padding: 20px; background: #1E1E1E; border: 1px solid var(--border); border-radius: 12px; line-height: 1.6;">
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0;">
+            Welcome to <strong>Anita Home Care</strong>, your trusted source for premium cleaning products in <strong>Hazaribag</strong>. Located at <strong>Bara Bazar, Ravindra Path</strong>, we manufacture high-quality <strong>Sava brand</strong> handwash and phenyl.
+        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">
+            Get the best <strong>White Phenyl and Hygiene supplies in Hazaribag</strong> with free delivery on orders over ₹500. Quality you can trust, prices you'll love.
+        </p>
+    </div>
+	<div class="section-title">Find Us</div>
     <div style="margin: 0 15px 20px; border-radius: 12px; border: 1px solid #333; overflow: hidden; background: #161616;">
         <div style="padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #222;">
             <i class="fa-solid fa-location-dot" style="color:var(--gold)"></i>
@@ -232,22 +241,36 @@
                 <i class="fa-brands fa-whatsapp" style="color:#25D366; display:block; margin-bottom:5px;"></i>
                 <span style="color:white; font-size:0.55rem; font-weight:800;">WHATSAPP</span>
             </a>
-            <a href="https://www.google.com/maps/search/Anita+Home+Care+Hazaribag" target="_blank" style="text-decoration:none; background: #222; padding: 12px 5px; border-radius: 8px; text-align: center; border: 1px solid #333;">
+            <a href="#" target="_blank" style="text-decoration:none; background: #222; padding: 12px 5px; border-radius: 8px; text-align: center; border: 1px solid #333;">
                 <i class="fa-solid fa-map-location-dot" style="color:#4285F4; display:block; margin-bottom:5px;"></i>
                 <span style="color:white; font-size:0.55rem; font-weight:800;">NAVIGATE</span>
             </a>
         </div>
     </div>
 
-    <div class="section-title">About Anita Home Care</div>
-    <div style="margin: 0 15px 40px; padding: 20px; background: #1E1E1E; border: 1px solid var(--border); border-radius: 12px; line-height: 1.6;">
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0;">
-            Welcome to <strong>Anita Home Care</strong>, your trusted source for premium cleaning products in <strong>Hazaribag</strong>. Located at <strong>Bara Bazar, Ravindra Path</strong>, we manufacture high-quality <strong>Sava brand</strong> handwash and phenyl.
-        </p>
-        <p style="font-size: 0.8rem; color: var(--text-muted);">
-            Get the best <strong>White Phenyl and Hygiene supplies in Hazaribag</strong> with free delivery on orders over ₹500. Quality you can trust, prices you'll love.
-        </p>
-    </div>
+    
+
+    <footer style="background: #080808; padding: 40px 20px 120px; border-top: 1px solid var(--border); text-align: center;">
+        <div style="margin-bottom: 20px;">
+            <div class="logo" style="font-size: 1rem;">ANITA <span>HOME CARE</span></div>
+            <p style="font-size: 0.65rem; color: #666; letter-spacing: 1px; margin-top: 5px;">QUALITY HYGIENE SOLUTIONS SINCE 2024</p>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 25px;">
+            <a href="#" style="color: var(--gold); font-size: 1.2rem;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" style="color: var(--gold); font-size: 1.2rem;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/918271277964" style="color: var(--gold); font-size: 1.2rem;"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <div style="border-top: 1px solid #1a1a1a; padding-top: 20px;">
+            <p style="font-size: 0.6rem; color: var(--text-muted); margin: 5px 0;">
+                &copy; <span id="year"></span> <strong>Anita Home Care</strong>. All Rights Reserved.
+            </p>
+            <p style="font-size: 0.55rem; color: #444; letter-spacing: 1px; text-transform: uppercase;">
+                Premium Quality • Hazaribag • Jharkhand
+            </p>
+        </div>
+    </footer>
 
     <div id="cart-sidebar" class="cart-sidebar">
         <div style="padding: 20px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
@@ -292,16 +315,42 @@
         let currentCategory = 'All';
 
         const PRODUCTS = [
-            { name: "Premium White Phenyl", price: 95, img: "https://images.unsplash.com/photo-1584622781564-1d9876a13d00?auto=format&fit=crop&w=400&q=80", badge: "BEST SELLER", cat: "Phenyl" },
-            { name: "Sava Rose Handwash", price: 70, img: "https://images.unsplash.com/photo-1603539201502-369408018e69?auto=format&fit=crop&w=400&q=80", cat: "Cleaning" },
-            { name: "Lemon Dishwash", price: 60, img: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=400&q=80", cat: "Cleaning" },
-            { name: "Naphthalene Balls", price: 40, img: "https://images.unsplash.com/photo-1590651037568-71e47d173d19?auto=format&fit=crop&w=400&q=80", cat: "Cleaning" },
-            { name: "Kitchen Combo Kit", price: 150, img: "https://images.unsplash.com/photo-1585671962215-473adff06c58?auto=format&fit=crop&w=400&q=80", cat: "Combos", badge: "SAVE 20%" },
-            { name: "Full Home Care Pack", price: 499, img: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=400&q=80", cat: "Combos", badge: "MOST POPULAR" }
+            { name: "White Floor Cleaner 1 Ltr", price: 60, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Floor Cleaner 1 Ltr (Rose)", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Floor Cleaner 1 Ltr (Lemon)", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Floor Cleaner 1 Ltr (Neem)", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "White Floor Cleaner 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Floor Cleaner 5 Ltr (Rose)", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Floor Cleaner 5 Ltr (Lemon)", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Floor Cleaner 5 Ltr (Neem)", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Black Floor Cleaner 500 ML", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Black Floor Cleaner 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Black Phenyl 450 ML ML", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Toilet Bowl Cleaner 200 ML", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Toilet Bowl Cleaner 500 ML", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Toilet Bowl Cleaner 700 ML", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Toilet Bowl Cleaner 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Tiles Cleaner 500 Ml", price: 60, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Tiles Cleaner 1 Ltr", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Glass Cleaner 500 Ml", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Glass Cleaner 5 Ltr", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Handwash 500 ML", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Handwash 1 Ltr ", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Handwash 5 Ltr", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Dishwash 500 ML", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Dishwash 1 Ltr", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Dishwash 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Bleaching Powder 400 Gram", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Bleaching Powder 25 Kg", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Phenyl Goli 100 Gram", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Phenyl Goli 70 Gram", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
+            { name: "Toilet Bowl Cleaner 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+            { name: "Tiles Cleaner 500 Ml", price: 499, img: href="img/images.jpg", cat: "Combos", badge: "MOST POPULAR" }
         ];
 
         let currentReview = 0;
         function initApp() {
+            document.getElementById('year').innerText = new Date().getFullYear();
             setGreeting();
             renderProducts(PRODUCTS);
             updateCart();
