@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Anita Home Care | Premium Cleaning Products Hazaribag</title>
+    <meta name="title" content="Anita Home Care | Premium Cleaning Products Hazaribag">
+    <meta name="description" content="Shop premium Phenyl, Handwash, and Floor Cleaners from Anita Home Care. Free delivery in Hazaribag on orders above ₹500. Quality home care at best prices.">
+    <meta name="keywords" content="Anita Home Care, Sava Handwash, Phenyl Hazaribag, Cleaning products Hazaribag, Home care products Jharkhand, Best floor cleaner Hazaribag, Anita Home Care Bara Bazar, buy cleaning supplies online Hazaribag">
+    <meta name="author" content="Anita Home Care">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anitahomecare.com/"> 
+    <meta property="og:title" content="Anita Home Care - Hazaribag's Premium Cleaning Store">
+    <meta property="og:description" content="Get the best deals on Sava Handwash and Premium Phenyl. Order via WhatsApp for fast delivery in Hazaribag.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1584622781564-1d9876a13d00?w=600"> 
+    
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Anita Home Care",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bara Bazar, Ravindra Path",
+        "addressLocality": "Hazaribag",
+        "postalCode": "825301",
+        "addressRegion": "JH",
+        "addressCountry": "IN"
+      },
+      "telephone": "+918271277964"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --gold: #D4AF37; 
+            --gold-light: #F1D382;
+            --dark-bg: #121212; 
+            --card-bg: #1E1E1E; 
+            --text-main: #FFFFFF; 
+            --text-muted: #A0A0A0;
+            --border: rgba(212, 175, 55, 0.2);
+        }
+
+        * { box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            margin: 0; 
+            padding-bottom: 80px; 
+            background: var(--dark-bg);
+            color: var(--text-main); 
+            overflow-x: hidden; 
+        }
+
+        /* PREMIUM HEADER */
+        .app-header { 
+            padding: 15px 20px; 
+            background: rgba(18, 18, 18, 0.95); 
+            backdrop-filter: blur(12px); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+        .logo span { color: var(--gold); }
+        .welcome-msg { font-size: 0.65rem; color: var(--gold); letter-spacing: 1px; margin-top: 4px; opacity: 0.8; }
+
+        .local-promo {
+            background: var(--gold);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-align: center;
+            padding: 5px 0;
+            letter-spacing: 1px;
+        }
+
+        .hot-deal-banner {
+            margin: 15px;
+            background: linear-gradient(135deg, #2C2C2C, #121212);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .hot-deal-banner h3 { margin: 0; font-size: 0.9rem; color: var(--gold); letter-spacing: 1px; }
+        .timer-container { display: flex; justify-content: center; gap: 10px; margin-top: 12px; }
+        .timer-box { background: #000; padding: 8px; border-radius: 6px; min-width: 45px; border: 1px solid #333; }
+        .timer-box span { display: block; font-size: 1rem; font-weight: 800; color: var(--gold); }
+        .timer-box label { font-size: 0.5rem; color: var(--text-muted); text-transform: uppercase; }
+
+        .search-container { padding: 10px 15px; background: var(--dark-bg); position: sticky; top: 75px; z-index: 999; }
+        .search-wrapper { position: relative; }
+        .search-input { 
+            width: 100%; background: #1E1E1E; border: 1px solid #333; 
+            padding: 12px 15px 12px 40px; border-radius: 8px; color: white; 
+            font-size: 0.85rem; outline: none; transition: 0.3s;
+        }
+        .search-input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+        .search-icon { position: absolute; left: 15px; top: 13px; color: var(--gold); font-size: 0.8rem; }
+
+        .filter-scroll { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 12px 0 5px 0; }
+        .filter-scroll::-webkit-scrollbar { display: none; }
+        .filter-chip { 
+            padding: 7px 18px; background: #1E1E1E; border: 1px solid #333; border-radius: 20px; 
+            font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;
+            white-space: nowrap; cursor: pointer; transition: 0.3s;
+        }
+        .filter-chip.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
+        .product-card { 
+            background: var(--card-bg); border-radius: 12px; border: 1px solid #2A2A2A; 
+            overflow: hidden; display: flex; flex-direction: column; position: relative;
+            transition: 0.3s;
+        }
+        .product-card.active-item { border-color: var(--gold); }
+        .product-card img { width: 100%; height: 140px; object-fit: cover; }
+        
+        .badge { position: absolute; top: 8px; left: 8px; background: var(--gold); color: #000; font-size: 0.5rem; font-weight: 800; padding: 3px 6px; border-radius: 4px; z-index: 5; }
+        .qty-tag { position: absolute; top: 8px; right: 8px; background: #FFF; color: #000; font-size: 0.6rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; z-index: 5; }
+
+        .add-btn { 
+            width: 100%; background: #000; color: var(--gold); border: 1px solid var(--gold); 
+            padding: 12px; font-weight: 700; cursor: pointer; font-size: 0.7rem;
+            text-transform: uppercase; margin-top: auto; transition: 0.2s;
+        }
+        .add-btn:active { background: var(--gold); color: #000; }
+
+        .section-title { padding: 20px 15px 10px; font-size: 0.8rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-weight: 800; }
+
+        .review-card { min-width: 100%; padding: 20px; background: #1E1E1E; border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+
+        .cart-sidebar { position: fixed; right: -100%; top: 0; width: 100%; max-width: 400px; height: 100%; background: #121212; z-index: 6000; transition: 0.4s ease; display: flex; flex-direction: column; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+        .cart-sidebar.active { right: 0; }
+        .offer-tag { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--border); color: var(--gold); padding: 12px; border-radius: 8px; font-size: 0.75rem; margin-bottom: 15px; text-align: center; font-weight: 600; }
+
+        .bottom-nav { 
+            position: fixed; bottom: 0; width: 100%; background: #000; 
+            display: flex; justify-content: space-around; align-items: center;
+            padding: 10px 0; border-top: 1px solid #222; z-index: 4000; 
+        }
+        .nav-item { 
+            color: #555; display: flex; flex-direction: column; align-items: center; 
+            font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; 
+            flex: 1; position: relative; cursor: pointer; transition: 0.3s;
+        }
+        .nav-item i { font-size: 1.1rem; margin-bottom: 4px; }
+        .nav-item.active { color: var(--gold); }
+
+        #cart-badge { 
+            background: var(--gold); color: #000; font-size: 0.6rem; font-weight: 800;
+            padding: 2px 6px; border-radius: 10px; position: absolute; 
+            top: -5px; right: 30%; border: 2px solid #000;
+        }
+
+        .cyber-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 9999; backdrop-filter: blur(5px); }
+        .cyber-modal { width: 85%; max-width: 320px; background: #1A1A1A; border: 1px solid var(--gold); padding: 25px; text-align: center; border-radius: 15px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+        .modal-btn { width: 100%; background: var(--gold); color: #000; border: none; padding: 12px; font-weight: 800; cursor: pointer; text-transform: uppercase; border-radius: 8px; margin-top: 10px; }
+    </style>
+</head>
+<body onload="initApp()">
+
+    <div class="local-promo">FREE DELIVERY IN HAZARIBAG ON ORDERS ABOVE ₹500</div>
+
+    <header class="app-header">
+        <div class="logo">ANITA <span>HOME CARE</span></div>
+        <div id="greeting" class="welcome-msg">LOADING...</div>
+    </header>
+
+    <div class="hot-deal-banner">
+        <h3><i class="fa-solid fa-bolt"></i> FLASH SALE ENDS IN</h3>
+        <div class="timer-container">
+            <div class="timer-box"><span id="t-hours">00</span><label>Hrs</label></div>
+            <div class="timer-box"><span id="t-min">00</span><label>Min</label></div>
+            <div class="timer-box"><span id="t-sec">00</span><label>Sec</label></div>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="productSearch" class="search-input" placeholder="Search cleaning products..." onkeyup="filterProducts()">
+        </div>
+        <div class="filter-scroll">
+            <div class="filter-chip active" onclick="setCategory('All', this)">All Items</div>
+            <div class="filter-chip" onclick="setCategory('Phenyl', this)">Phenyl</div>
+            <div class="filter-chip" onclick="setCategory('Cleaning', this)">Cleaning</div>
+            <div class="filter-chip" onclick="setCategory('Combos', this)">Combos</div>
+        </div>
+    </div>
+
+    <div id="productGrid" class="product-grid"></div>
+
+    <div class="section-title">Customer Feedback</div>
+    <div class="reviews-wrapper" style="margin: 0 15px 30px; position: relative; overflow: hidden;">
+        <div id="reviewTrack" style="display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
+            <div class="review-card">
+                <div style="color: var(--gold); margin-bottom: 8px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p style="font-size: 0.8rem; font-style: italic; color: var(--text-muted);">"Premium quality phenyl. The fragrance lasts all day in my office."</p>
+                <h5 style="margin: 10px 0 0; font-size: 0.7rem; color: var(--gold);">- Rajesh, Hazaribag</h5>
+            </div>
+            <div class="review-card">
+                <div style="color: var(--gold); margin-bottom: 8px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p style="font-size: 0.8rem; font-style: italic; color: var(--text-muted);">"The Rose handwash is excellent and very affordable."</p>
+                <h5 style="margin: 10px 0 0; font-size: 0.7rem; color: var(--gold);">- Suman Devi</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Find Us</div>
+    <div style="margin: 0 15px 20px; border-radius: 12px; border: 1px solid #333; overflow: hidden; background: #161616;">
+        <div style="padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #222;">
+            <i class="fa-solid fa-location-dot" style="color:var(--gold)"></i>
+            <span style="font-size:0.7rem; color:#888;">Bara Bazar, Ravindra Path, Hazaribag</span>
+        </div>
+        <div style="padding: 15px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+            <a href="tel:+918271277964" style="text-decoration:none; background: #222; padding: 12px 5px; border-radius: 8px; text-align: center; border: 1px solid #333;">
+                <i class="fa-solid fa-phone" style="color:var(--gold); display:block; margin-bottom:5px;"></i>
+                <span style="color:white; font-size:0.55rem; font-weight:800;">CALL</span>
+            </a>
+            <a href="https://wa.me/918271277964" style="text-decoration:none; background: #222; padding: 12px 5px; border-radius: 8px; text-align: center; border: 1px solid #333;">
+                <i class="fa-brands fa-whatsapp" style="color:#25D366; display:block; margin-bottom:5px;"></i>
+                <span style="color:white; font-size:0.55rem; font-weight:800;">WHATSAPP</span>
+            </a>
+            <a href="https://www.google.com/maps/search/Anita+Home+Care+Hazaribag" target="_blank" style="text-decoration:none; background: #222; padding: 12px 5px; border-radius: 8px; text-align: center; border: 1px solid #333;">
+                <i class="fa-solid fa-map-location-dot" style="color:#4285F4; display:block; margin-bottom:5px;"></i>
+                <span style="color:white; font-size:0.55rem; font-weight:800;">NAVIGATE</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-title">About Anita Home Care</div>
+    <div style="margin: 0 15px 40px; padding: 20px; background: #1E1E1E; border: 1px solid var(--border); border-radius: 12px; line-height: 1.6;">
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0;">
+            Welcome to <strong>Anita Home Care</strong>, your trusted source for premium cleaning products in <strong>Hazaribag</strong>. Located at <strong>Bara Bazar, Ravindra Path</strong>, we manufacture high-quality <strong>Sava brand</strong> handwash and phenyl.
+        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">
+            Get the best <strong>White Phenyl and Hygiene supplies in Hazaribag</strong> with free delivery on orders over ₹500. Quality you can trust, prices you'll love.
+        </p>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div style="padding: 20px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin:0; font-size: 0.9rem; letter-spacing: 1px;">SHOPPING BAG</h3>
+            <i class="fa-solid fa-xmark" onclick="toggleCart()" style="color:var(--gold); font-size:1.5rem; cursor:pointer;"></i>
+        </div>
+        <div id="cart-list" style="flex:1; overflow-y: auto;"></div>
+        <div style="padding: 20px; border-top: 1px solid #333; background: #161616;">
+            <div id="total-container"></div>
+            <input type="text" id="cust-name" placeholder="Full Name" class="search-input" style="margin-top:10px;">
+            <input type="text" id="cust-addr" placeholder="Hazaribag Delivery Address" class="search-input" style="margin-top:10px;">
+            <button onclick="checkout()" style="width:100%; background:var(--gold); color:#000; padding:15px; border:none; font-weight:800; margin-top:15px; cursor: pointer; text-transform: uppercase; border-radius: 8px;">
+                Order on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="toggleCart()">
+            <i class="fa-solid fa-basket-shopping"></i>
+            <span id="cart-badge" style="display:none;">0</span>
+            <span>Bag</span>
+        </div>
+    </nav>
+
+    <div id="cyberModal" class="cyber-modal-overlay">
+        <div class="cyber-modal">
+            <div id="modal-icon" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 10px;"></div>
+            <h2 id="modalTitle" style="margin: 0; font-size: 1rem;"></h2>
+            <p id="modalDesc" style="color:var(--text-muted); font-size:0.7rem; margin: 10px 0 20px 0; line-height:1.4;"></p>
+            <button class="modal-btn" id="modalActionBtn">Understood</button>
+        </div>
+    </div>
+
+    <script>
+        const PHONE = "918271277964";
+        let cart = JSON.parse(localStorage.getItem('ahc_cart_v2')) || {};
+        let currentCategory = 'All';
+
+        const PRODUCTS = [
+            { name: "Premium White Phenyl", price: 95, img: "https://images.unsplash.com/photo-1584622781564-1d9876a13d00?auto=format&fit=crop&w=400&q=80", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Sava Rose Handwash", price: 70, img: "https://images.unsplash.com/photo-1603539201502-369408018e69?auto=format&fit=crop&w=400&q=80", cat: "Cleaning" },
+            { name: "Lemon Dishwash", price: 60, img: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=400&q=80", cat: "Cleaning" },
+            { name: "Naphthalene Balls", price: 40, img: "https://images.unsplash.com/photo-1590651037568-71e47d173d19?auto=format&fit=crop&w=400&q=80", cat: "Cleaning" },
+            { name: "Kitchen Combo Kit", price: 150, img: "https://images.unsplash.com/photo-1585671962215-473adff06c58?auto=format&fit=crop&w=400&q=80", cat: "Combos", badge: "SAVE 20%" },
+            { name: "Full Home Care Pack", price: 499, img: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=400&q=80", cat: "Combos", badge: "MOST POPULAR" }
+        ];
+
+        let currentReview = 0;
+        function initApp() {
+            setGreeting();
+            renderProducts(PRODUCTS);
+            updateCart();
+            startTimer();
+            setInterval(() => {
+                const track = document.getElementById('reviewTrack');
+                currentReview = (currentReview + 1) % 2;
+                track.style.transform = `translateX(-${currentReview * 100}%)`;
+            }, 4000);
+        }
+
+        function startTimer() {
+            const update = () => {
+                const now = new Date();
+                const midnight = new Date(); midnight.setHours(24, 0, 0, 0);
+                const diff = midnight - now;
+                document.getElementById('t-hours').innerText = Math.floor((diff / 3600000) % 24).toString().padStart(2, '0');
+                document.getElementById('t-min').innerText = Math.floor((diff / 60000) % 60).toString().padStart(2, '0');
+                document.getElementById('t-sec').innerText = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
+            }
+            setInterval(update, 1000); update();
+        }
+
+        function setGreeting() {
+            const h = new Date().getHours();
+            let msg = h < 12 ? "GOOD MORNING" : (h < 17 ? "GOOD AFTERNOON" : "GOOD EVENING");
+            document.getElementById('greeting').innerText = msg + ", WELCOME TO HAZARIBAG'S BEST";
+        }
+
+        function setCategory(cat, el) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('productSearch').value.toLowerCase();
+            const filtered = PRODUCTS.filter(p => (currentCategory === 'All' || p.cat === currentCategory) && p.name.toLowerCase().includes(query));
+            renderProducts(filtered);
+        }
+
+        function renderProducts(data) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = data.map(p => {
+                const qty = cart[p.name]?.qty || 0;
+                return `
+                <div class="product-card ${qty > 0 ? 'active-item' : ''}">
+                    ${p.badge ? `<div class="badge">${p.badge}</div>` : ''}
+                    ${qty > 0 ? `<div class="qty-tag">${qty}x</div>` : ''}
+                    <img src="${p.img}" alt="${p.name} Anita Home Care Hazaribag" loading="lazy">
+                    <div style="padding:12px; flex:1; display:flex; flex-direction:column;">
+                        <h4 style="margin:0; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.5px;">${p.name}</h4>
+                        <p style="color:var(--gold); font-weight:800; margin:6px 0; font-size:0.9rem;">₹${p.price}</p>
+                        <button class="add-btn" onclick="addToCart('${p.name}', ${p.price})">${qty > 0 ? 'Add More' : 'Add to Bag'}</button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function addToCart(name, price) {
+            cart[name] = cart[name] ? { ...cart[name], qty: cart[name].qty + 1 } : { name, price, qty: 1 };
+            syncCart();
+        }
+
+        function changeQty(name, delta) {
+            cart[name].qty += delta;
+            if (cart[name].qty <= 0) delete cart[name];
+            syncCart();
+        }
+
+        function syncCart() {
+            localStorage.setItem('ahc_cart_v2', JSON.stringify(cart));
+            updateCart(); renderProducts(PRODUCTS);
+        }
+
+        function updateCart() {
+            const list = document.getElementById('cart-list');
+            let sub = 0, count = 0;
+            const items = Object.values(cart);
+            list.innerHTML = items.length > 0 ? items.map(i => {
+                sub += (i.price * i.qty); count += i.qty;
+                return `<div style="display:flex; justify-content:space-between; padding:15px; border-bottom:1px solid #222; align-items:center;">
+                    <div><b style="font-size:0.75rem; color:#fff;">${i.name}</b><br><small style="color:var(--gold)">₹${i.price}</small></div>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <button style="background:#000; color:var(--gold); border:1px solid #333; width:28px; height:28px; border-radius:4px;" onclick="changeQty('${i.name}', -1)">-</button>
+                        <span style="font-weight:800; min-width:15px; text-align:center; font-size:0.8rem;">${i.qty}</span>
+                        <button style="background:#000; color:var(--gold); border:1px solid #333; width:28px; height:28px; border-radius:4px;" onclick="changeQty('${i.name}', 1)">+</button>
+                    </div>
+                </div>`;
+            }).join('') : '<div style="padding:60px 20px; text-align:center; color:#555; font-size:0.75rem; letter-spacing:1px;">YOUR BAG IS EMPTY</div>';
+
+            let discRate = sub >= 1000 ? 0.15 : (sub >= 500 ? 0.10 : 0);
+            let total = sub - Math.round(sub * discRate);
+            
+            document.getElementById('total-container').innerHTML = `
+                <div class="offer-tag">${sub < 500 ? `Add ₹${500-sub} more for 10% OFF` : (sub < 1000 ? `Add ₹${1000-sub} more for 15% OFF` : '15% GOLD DISCOUNT APPLIED!')}</div>
+                <div style="display:flex; justify-content:space-between; font-weight:800; color:var(--gold); font-size:1.1rem; margin-bottom:5px;"><span>TOTAL</span><span>₹${total}</span></div>
+                <div style="text-align:right; font-size:0.6rem; color:#666;">Incl. of all taxes</div>`;
+            
+            const badge = document.getElementById('cart-badge');
+            badge.innerText = count;
+            badge.style.display = count > 0 ? 'block' : 'none';
+        }
+
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
+
+        function showStatus(title, desc, type = 'success') {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modal-icon').innerHTML = type === 'error' ? '<i class="fa-solid fa-triangle-exclamation"></i>' : '<i class="fa-solid fa-circle-check"></i>';
+            document.getElementById('cyberModal').style.display = 'flex';
+            document.getElementById('modalActionBtn').onclick = () => {
+                document.getElementById('cyberModal').style.display = 'none';
+                if(type === 'success' && title.includes("ORDER")) { 
+                    cart = {}; syncCart(); toggleCart(); 
+                }
+            };
+        }
+
+        function generateOrderId() {
+            const date = new Date();
+            const random = Math.floor(1000 + Math.random() * 9000);
+            return `AHC-${date.getMonth()+1}${date.getDate()}-${random}`;
+        }
+
+        function checkout() {
+            const n = document.getElementById('cust-name').value.trim();
+            const a = document.getElementById('cust-addr').value.trim();
+            if (Object.keys(cart).length === 0) return showStatus("BAG EMPTY", "Please add some items before checking out.", "error");
+            if (!n || !a) return showStatus("INFO REQUIRED", "Please provide your Name and Address for delivery in Hazaribag.", "error");
+            
+            const orderId = generateOrderId();
+            let itemsText = ""; let sub = 0;
+            Object.values(cart).forEach(i => { itemsText += `• ${i.name} [x${i.qty}]\n`; sub += (i.price * i.qty); });
+            let total = sub - Math.round(sub * ((sub >= 1000 ? 0.15 : (sub >= 500 ? 0.10 : 0))));
+
+            const msg = `*ORDER ID: *${orderId}*\n*ANITA HOME CARE*\n\n*Customer:* ${n}\n*Address:* ${a}\n\n*Items:*\n${itemsText}\n*Final Amount: ₹${total}*\n\n_Please confirm this order._`;
+            
+            window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`);
+            showStatus(`ORDER: ${orderId}`, "Order details sent. Please click 'Send' on WhatsApp to finalize.");
+        }
+    </script>
+</body>
+</html>
