@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+
 	/* Trust Badge & Delivery Styles */
 .trust-container {
     margin: 10px 15px;
@@ -312,6 +313,16 @@
     <i class="fa-solid fa-clock-rotate-left" style="color:var(--gold); margin-right:5px;"></i>
     Orders placed before <b>2:00 PM</b> delivered <b>Same Day</b> in Hazaribag!
 </div>
+<div id="orderHistory" class="history-section" style="display:none; margin: 20px 15px; padding: 15px; background: #1a1a1a; border: 1px solid var(--border); border-radius: 12px;">
+    <div class="history-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h4 style="margin:0; font-size:0.8rem; color:var(--gold);">YOUR LAST ORDER</h4>
+        <span id="last-order-date" style="font-size:0.6rem; color:#666;"></span>
+    </div>
+    <div id="history-items-list" style="font-size: 0.7rem; color: var(--text-muted);"></div>
+    <button class="reorder-btn" onclick="reorderLast()" style="width: 100%; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px; font-size: 0.7rem; font-weight: 800; border-radius: 6px; margin-top: 10px; cursor: pointer;">
+        RE-ORDER ITEMS
+    </button>
+</div>
     <div id="productGrid" class="product-grid"></div>
 
     <div class="section-title">Customer Feedback</div>
@@ -493,17 +504,14 @@ function updateDeliveryPromise() {
 updateDeliveryPromise();
         let currentReview = 0;
         function initApp() {
-            document.getElementById('year').innerText = new Date().getFullYear();
-            setGreeting();
-            renderProducts(PRODUCTS);
-            updateCart();
-            startTimer();
-            setInterval(() => {
-                const track = document.getElementById('reviewTrack');
-                currentReview = (currentReview + 1) % 2;
-                track.style.transform = `translateX(-${currentReview * 100}%)`;
-            }, 4000);
-        }
+    document.getElementById('year').innerText = new Date().getFullYear();
+    setGreeting();
+    renderProducts(PRODUCTS);
+    updateCart();
+    startTimer();
+    loadHistory(); // <--- ADD THIS LINE
+    // ... rest of your interval code ...
+}
 
         function startTimer() {
             const update = () => {
@@ -620,22 +628,39 @@ updateDeliveryPromise();
             return `AHC-${date.getMonth()+1}${date.getDate()}-${random}`;
         }
 
-        function checkout() {
-            const n = document.getElementById('cust-name').value.trim();
-            const a = document.getElementById('cust-addr').value.trim();
-            if (Object.keys(cart).length === 0) return showStatus("BAG EMPTY", "Please add some items before checking out.", "error");
-            if (!n || !a) return showStatus("INFO REQUIRED", "Please provide your Name and Address for delivery in Hazaribag.", "error");
-            
-            const orderId = generateOrderId();
-            let itemsText = ""; let sub = 0;
-            Object.values(cart).forEach(i => { itemsText += `• ${i.name} [x${i.qty}]\n`; sub += (i.price * i.qty); });
-            let total = sub - Math.round(sub * ((sub >= 1000 ? 0.15 : (sub >= 500 ? 0.10 : 0))));
+       function checkout() {
+    const n = document.getElementById('cust-name').value.trim();
+    const a = document.getElementById('cust-addr').value.trim();
+    
+    // 1. Basic Validations
+    if (Object.keys(cart).length === 0) return showStatus("BAG EMPTY", "Please add some items before checking out.", "error");
+    if (!n || !a) return showStatus("INFO REQUIRED", "Please provide your Name and Address for delivery in Hazaribag.", "error");
+    
+    const orderId = generateOrderId();
+    let itemsText = ""; 
+    let sub = 0;
+    const itemsArray = Object.values(cart); 
 
-            const msg = `*ORDER ID: *${orderId}*\n*ANITA HOME CARE*\n\n*Customer:* ${n}\n*Address:* ${a}\n\n*Items:*\n${itemsText}\n*Final Amount: ₹${total}*\n\n_Please confirm this order._`;
-            
-            window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`);
-            showStatus(`ORDER: ${orderId}`, "Order details sent. Please click 'Send' on WhatsApp to finalize.");
-        }
+    // 2. Calculate Subtotal and build message text
+    itemsArray.forEach(i => { 
+        itemsText += `• ${i.name} [x${i.qty}]\n`; 
+        sub += (i.price * i.qty); 
+    });
+    
+    // 3. Calculate Discount and Final Total
+    let discRate = sub >= 1000 ? 0.15 : (sub >= 500 ? 0.10 : 0);
+    let finalTotal = sub - Math.round(sub * discRate);
+
+    // 4. Save to History (Fixed: using finalTotal instead of undefined 'total')
+    saveToHistory(itemsArray, finalTotal);
+
+    // 5. Generate WhatsApp Message
+    const msg = `*ORDER ID: ${orderId}*\n*ANITA HOME CARE*\n\n*Customer:* ${n}\n*Address:* ${a}\n\n*Items:*\n${itemsText}\n*Final Amount: ₹${finalTotal}*\n\n_Please confirm this order._`;
+    
+    // 6. Open WhatsApp and Show Status
+    window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`);
+    showStatus(`ORDER: ${orderId}`, "Order details sent. Please click 'Send' on WhatsApp to finalize.");
+}
 		// Ensure 'PHONE' variable is defined in your script (e.g., const PHONE = "918271277964";)
 
 function sendBulkInquiry() {
@@ -674,6 +699,53 @@ function showBulkSuccess(userName) {
         `Thank you, ${userName}! Your wholesale request has been generated. Please click SEND on WhatsApp to finish.`, 
         "success"
     );
-}    </script>
+}    
+// 1. New function to save orders to the phone's memory
+function saveToHistory(itemsArray, finalTotal) {
+    const history = {
+        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }),
+        items: itemsArray,
+        total: finalTotal
+    };
+    localStorage.setItem('ahc_last_order', JSON.stringify(history));
+}
+
+// 2. New function to load and show the history box
+function loadHistory() {
+    const historyData = localStorage.getItem('ahc_last_order');
+    const container = document.getElementById('orderHistory');
+    if (!historyData || !container) return;
+
+    const history = JSON.parse(historyData);
+    const list = document.getElementById('history-items-list');
+    const dateSpan = document.getElementById('last-order-date');
+
+    dateSpan.innerText = history.date;
+    list.innerHTML = history.items.map(i => `
+        <div class="history-item">
+            <span>${i.name} (x${i.qty})</span>
+            <span>₹${i.price * i.qty}</span>
+        </div>
+    `).join('');
+
+    container.style.display = 'block'; // Make the section visible
+}
+
+// 3. New function to handle the "RE-ORDER" button click
+function reorderLast() {
+    const historyData = localStorage.getItem('ahc_last_order');
+    if (!historyData) return;
+
+    const history = JSON.parse(historyData);
+    cart = {}; // Clear current cart
+    history.items.forEach(item => {
+        cart[item.name] = { name: item.name, price: item.price, qty: item.qty };
+    });
+
+    syncCart();
+    toggleCart(); 
+    showStatus("RE-ORDERED", "Your last order has been added to the bag!", "success");
+}
+</script>
 </body>
 </html>
