@@ -37,7 +37,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+/* Refill Reminder Styles */
+.refill-reminder {
+    margin: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #1a1a1a, #000);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.8s ease-in;
+}
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.refill-btn {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 10px;
+}
 	/* Trust Badge & Delivery Styles */
 .trust-container {
     margin: 10px 15px;
@@ -323,6 +349,22 @@
         RE-ORDER ITEMS
     </button>
 </div>
+<div id="refillBox" class="refill-reminder">
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <i class="fa-solid fa-droplet" style="color: var(--gold); font-size: 1.2rem;"></i>
+        <div>
+            <h4 style="margin: 0; font-size: 0.8rem; color: #fff;">Running low on supplies?</h4>
+            <p style="margin: 3px 0 0; font-size: 0.65rem; color: var(--text-muted);">
+                It's been a month since your last order. Restock now for a clean home!
+            </p>
+        </div>
+    </div>
+    <button class="refill-btn" onclick="reorderLast()">YES, ADD TO BAG</button>
+    <button onclick="document.getElementById('refillBox').style.display='none'" 
+            style="background:none; border:none; color:#555; font-size:0.6rem; margin-left:10px; cursor:pointer;">
+        NOT NOW
+    </button>
+</div>
     <div id="productGrid" class="product-grid"></div>
 
     <div class="section-title">Customer Feedback</div>
@@ -454,37 +496,37 @@
         let currentCategory = 'All';
 
         const PRODUCTS = [
-            { name: "White Floor Cleaner 1 Ltr", price: 60, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
-            { name: "Floor Cleaner 1 Ltr (Rose)", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Floor Cleaner 1 Ltr (Lemon)", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Floor Cleaner 1 Ltr (Neem)", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "White Floor Cleaner 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
-			{ name: "Floor Cleaner 5 Ltr (Rose)", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
-            { name: "Floor Cleaner 5 Ltr (Lemon)", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Floor Cleaner 5 Ltr (Neem)", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Black Floor Cleaner 500 ML", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Black Floor Cleaner 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
-			{ name: "Black Phenyl 450 ML ML", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
-            { name: "Toilet Bowl Cleaner 200 ML", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Toilet Bowl Cleaner 500 ML", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Toilet Bowl Cleaner 700 ML", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Toilet Bowl Cleaner 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
-			{ name: "Tiles Cleaner 500 Ml", price: 60, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
-            { name: "Tiles Cleaner 1 Ltr", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Glass Cleaner 500 Ml", price: 75, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Glass Cleaner 5 Ltr", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Handwash 500 ML", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
-			{ name: "Handwash 1 Ltr ", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
-            { name: "Handwash 5 Ltr", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Dishwash 500 ML", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Dishwash 1 Ltr", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Dishwash 5 Ltr", price: 150, img: href="img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
-			{ name: "Bleaching Powder 400 Gram", price: 95, img: href="img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
-            { name: "Bleaching Powder 25 Kg", price: 70, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Phenyl Goli 100 Gram", price: 60, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Phenyl Goli 70 Gram", price: 40, img: href="img/images.jpg", cat: "Cleaning" },
-            { name: "Chawal Tilouri", price: 150, img: href="img/images.jpg", cat: "Food", badge: "Not Available" },
-            { name: "Tiles Cleaner 500 Ml", price: 499, img: href="img/images.jpg", cat: "Combos", badge: "MOST POPULAR" }
+            { name: "White Floor Cleaner 1 Ltr", price: 60, img: "img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Floor Cleaner 1 Ltr (Rose)", price: 75, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Floor Cleaner 1 Ltr (Lemon)", price: 75, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Floor Cleaner 1 Ltr (Neem)", price: 40, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "White Floor Cleaner 5 Ltr", price: 150, img: "img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Floor Cleaner 5 Ltr (Rose)", price: 95, img: "img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Floor Cleaner 5 Ltr (Lemon)", price: 70, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Floor Cleaner 5 Ltr (Neem)", price: 60, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Black Floor Cleaner 500 ML", price: 40, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Black Floor Cleaner 5 Ltr", price: 150, img: "img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Black Phenyl 450 ML ML", price: 95, img: "img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Toilet Bowl Cleaner 200 ML", price: 70, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Toilet Bowl Cleaner 500 ML", price: 60, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Toilet Bowl Cleaner 700 ML", price: 40, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Toilet Bowl Cleaner 5 Ltr", price: 150, img: "img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Tiles Cleaner 500 Ml", price: 60, img: "img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Tiles Cleaner 1 Ltr", price: 75, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Glass Cleaner 500 Ml", price: 75, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Glass Cleaner 5 Ltr", price: 40, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Handwash 500 ML", price: 150, img: "img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Handwash 1 Ltr ", price: 95, img: "img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Handwash 5 Ltr", price: 70, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Dishwash 500 ML", price: 60, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Dishwash 1 Ltr", price: 40, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Dishwash 5 Ltr", price: 150, img: "img/images.jpg", cat: "Combos", badge: "SAVE 20%" },
+			{ name: "Bleaching Powder 400 Gram", price: 95, img: "img/images.jpg", badge: "BEST SELLER", cat: "Phenyl" },
+            { name: "Bleaching Powder 25 Kg", price: 70, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Phenyl Goli 100 Gram", price: 60, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Phenyl Goli 70 Gram", price: 40, img: "img/images.jpg", cat: "Cleaning" },
+            { name: "Chawal Tilouri", price: 150, img: "img/images.jpg", cat: "Food", badge: "Not Available" },
+            { name: "Tiles Cleaner 500 Ml", price: 499, img: "img/images.jpg", cat: "Combos", badge: "MOST POPULAR" }
         ];
 function updateDeliveryPromise() {
     const promiseEl = document.querySelector('.delivery-promise b:last-child');
@@ -501,16 +543,53 @@ function updateDeliveryPromise() {
 }
 
 // Call this inside your initApp()
-updateDeliveryPromise();
-        let currentReview = 0;
+
+        
         function initApp() {
     document.getElementById('year').innerText = new Date().getFullYear();
     setGreeting();
     renderProducts(PRODUCTS);
     updateCart();
     startTimer();
-    loadHistory(); // <--- ADD THIS LINE
-    // ... rest of your interval code ...
+    loadHistory();
+    checkRefillNeed();
+    updateDeliveryPromise();
+	
+    // --- REVIEWS SLIDER LOGIC START ---
+    let reviewIndex = 0; 
+    setInterval(() => {
+        const track = document.getElementById('reviewTrack');
+        if(track) {
+            // Change '2' to the total number of reviews in your HTML
+            reviewIndex = (reviewIndex + 1) % 2; 
+            track.style.transform = `translateX(-${reviewIndex * 100}%)`;
+        }
+    }, 4000); // Moves every 4 seconds
+    // --- REVIEWS SLIDER LOGIC END ---
+}
+function checkRefillNeed() {
+    const historyData = localStorage.getItem('ahc_last_order');
+    if (!historyData) return;
+
+    const history = JSON.parse(historyData);
+    
+    // Convert the saved date string back to a Date object
+    // Note: This logic assumes the date format is "DD MMM" like "28 Mar"
+    const lastDate = new Date(history.date + " " + new Date().getFullYear());
+    const today = new Date();
+    
+    // Calculate difference in days
+    const diffTime = Math.abs(today - lastDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    // If more than 30 days have passed, show the reminder
+    if (diffDays >= 30) {
+        document.getElementById('refillBox').style.display = 'block';
+        // Optional: Hide the standard History box to focus on the reminder
+        if(document.getElementById('orderHistory')) {
+            document.getElementById('orderHistory').style.display = 'none';
+        }
+    }
 }
 
         function startTimer() {
