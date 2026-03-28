@@ -559,8 +559,9 @@ function sendBulkInquiry() {
     const items = document.getElementById('bulk-items').value.trim();
     const notes = document.getElementById('bulk-notes').value.trim();
 
+    // 1. Better looking Blank Form Alert using your existing Modal system
     if (!name || !items) {
-        alert("Please provide your name and the items you require.");
+        showStatus("DETAILS MISSING", "Please provide your Name and the Items you need so we can give you a quote.", "error");
         return;
     }
 
@@ -570,18 +571,25 @@ function sendBulkInquiry() {
                       `*Notes:* ${encodeURIComponent(notes || "None")}%0A%0A` +
                       `_Please provide a discounted quote for Hazaribag delivery._`;
 
+    // Open WhatsApp
     window.open(`https://wa.me/${PHONE}?text=${whatsappMsg}`);
     
-    // Optional: Clear form after sending
+    // 2. Show "Thank You" Message and Clear Form
+    showBulkSuccess(name);
+}
+
+function showBulkSuccess(userName) {
+    // Clear the form fields
     document.getElementById('bulk-name').value = "";
     document.getElementById('bulk-items').value = "";
     document.getElementById('bulk-notes').value = "";
-}
 
-// Function to scroll to this section (Add to your "Bulk Order" chip onclick)
-function scrollToBulk() {
-    document.getElementById('bulkSection').scrollIntoView({ behavior: 'smooth' });
-}
-    </script>
+    // Show your custom theme modal as a Thank You
+    showStatus(
+        "ENQUIRY SENT!", 
+        `Thank you, ${userName}! Your wholesale request has been generated. Please click SEND on WhatsApp to finish.`, 
+        "success"
+    );
+}    </script>
 </body>
 </html>
