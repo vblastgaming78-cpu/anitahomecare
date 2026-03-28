@@ -380,7 +380,16 @@
                 <p style="font-size: 0.8rem; font-style: italic; color: var(--text-muted);">"The Rose handwash is excellent and very affordable."</p>
                 <h5 style="margin: 10px 0 0; font-size: 0.7rem; color: var(--gold);">- Suman Devi</h5>
             </div>
-			
+			 <div class="review-card">
+                <div style="color: var(--gold); margin-bottom: 8px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p style="font-size: 0.8rem; font-style: italic; color: var(--text-muted);">"Premium quality phenyl. The fragrance lasts all day in my office."</p>
+                <h5 style="margin: 10px 0 0; font-size: 0.7rem; color: var(--gold);">- Rajesh, Hazaribag</h5>
+            </div>
+            <div class="review-card">
+                <div style="color: var(--gold); margin-bottom: 8px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p style="font-size: 0.8rem; font-style: italic; color: var(--text-muted);">"The Rose handwash is excellent and very affordable."</p>
+                <h5 style="margin: 10px 0 0; font-size: 0.7rem; color: var(--gold);">- Suman Devi</h5>
+            </div>
         </div>
     </div>
 
@@ -561,7 +570,7 @@ function updateDeliveryPromise() {
         const track = document.getElementById('reviewTrack');
         if(track) {
             // Change '2' to the total number of reviews in your HTML
-            reviewIndex = (reviewIndex + 1) % 2; 
+            reviewIndex = (reviewIndex + 1) % 4; 
             track.style.transform = `translateX(-${reviewIndex * 100}%)`;
         }
     }, 4000); // Moves every 4 seconds
