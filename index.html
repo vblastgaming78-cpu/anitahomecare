@@ -236,22 +236,97 @@
         }
         .filter-chip.active { background: var(--gold); color: #000; border-color: var(--gold); }
 
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
-        .product-card { 
-            background: var(--card-bg); border-radius: 12px; border: 1px solid #2A2A2A; 
-            overflow: hidden; display: flex; flex-direction: column; position: relative;
-            transition: 0.3s;
-        }
-        .product-card.active-item { border-color: var(--gold); }
-        .product-card img { width: 100%; height: 140px; object-fit: cover; }
-        
-        .badge { position: absolute; top: 8px; left: 8px; background: var(--gold); color: #000; font-size: 0.5rem; font-weight: 800; padding: 3px 6px; border-radius: 4px; z-index: 5; }
-        .qty-tag { position: absolute; top: 8px; right: 8px; background: #FFF; color: #000; font-size: 0.6rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; z-index: 5; }
+        /* --- ENHANCED PREMIUM CARD CSS --- */
+.product-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    padding: 15px; 
+}
 
-        .add-btn { 
-            width: 100%; background: #000; color: var(--gold); border: 1px solid var(--gold); 
-            padding: 12px; font-weight: 700; cursor: pointer; font-size: 0.7rem;
-            text-transform: uppercase; margin-top: auto; transition: 0.2s;
+.product-card { 
+    background: linear-gradient(145deg, #1e1e1e, #121212); 
+    border-radius: 16px; 
+    border: 1px solid rgba(212, 175, 55, 0.2); 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Gold glow on hover or when active */
+.product-card:hover, .product-card.active-item {
+    transform: translateY(-5px);
+    border-color: #D4AF37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+}
+
+.product-card img { 
+    width: 100%; 
+    height: 140px; 
+    object-fit: cover; 
+    border-bottom: 1px solid #222;
+}
+
+.card-info {
+    padding: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-info h4 {
+    margin: 0;
+    font-size: 0.7rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+.price-container {
+    margin: 8px 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #D4AF37;
+}
+
+.price-container span {
+    font-size: 0.7rem;
+    margin-right: 2px;
+}
+
+.add-btn { 
+    width: 100%; 
+    background: transparent; 
+    color: #D4AF37; 
+    border: 1px solid #D4AF37; 
+    padding: 10px; 
+    font-weight: 800; 
+    cursor: pointer; 
+    font-size: 0.65rem;
+    text-transform: uppercase; 
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.add-btn:active { 
+    background: #D4AF37; 
+    color: #000; 
+}
+
+/* Badge Fixes */
+.badge { 
+    position: absolute; top: 8px; left: 8px; background: #D4AF37; color: #000; 
+    font-size: 0.5rem; font-weight: 800; padding: 3px 6px; border-radius: 4px; z-index: 5; 
+}
+.qty-tag { 
+    position: absolute; top: 8px; right: 8px; background: #fff; color: #000; 
+    font-size: 0.6rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; z-index: 5; 
+}
         }
         .add-btn:active { background: var(--gold); color: #000; }
 
@@ -633,22 +708,24 @@ function checkRefillNeed() {
         }
 
         function renderProducts(data) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = data.map(p => {
-                const qty = cart[p.name]?.qty || 0;
-                return `
-                <div class="product-card ${qty > 0 ? 'active-item' : ''}">
-                    ${p.badge ? `<div class="badge">${p.badge}</div>` : ''}
-                    ${qty > 0 ? `<div class="qty-tag">${qty}x</div>` : ''}
-                    <img src="${p.img}" alt="${p.name} Anita Home Care Hazaribag" loading="lazy">
-                    <div style="padding:12px; flex:1; display:flex; flex-direction:column;">
-                        <h4 style="margin:0; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.5px;">${p.name}</h4>
-                        <p style="color:var(--gold); font-weight:800; margin:6px 0; font-size:0.9rem;">₹${p.price}</p>
-                        <button class="add-btn" onclick="addToCart('${p.name}', ${p.price})">${qty > 0 ? 'Add More' : 'Add to Bag'}</button>
-                    </div>
-                </div>`;
-            }).join('');
-        }
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = data.map(p => {
+        const qty = cart[p.name]?.qty || 0;
+        return `
+        <div class="product-card ${qty > 0 ? 'active-item' : ''}">
+            ${p.badge ? `<div class="badge">${p.badge}</div>` : ''}
+            ${qty > 0 ? `<div class="qty-tag">${qty}x</div>` : ''}
+            <img src="${p.img}" alt="${p.name} Anita Home Care Hazaribag" loading="lazy">
+            <div class="card-info">
+                <h4>${p.name}</h4>
+                <div class="price-container"><span>₹</span>${p.price}</div>
+                <button class="add-btn" onclick="addToCart('${p.name}', ${p.price})">
+                    ${qty > 0 ? '<i class="fa-solid fa-plus"></i> Add More' : 'Add to Bag'}
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+}
 
         function addToCart(name, price) {
             cart[name] = cart[name] ? { ...cart[name], qty: cart[name].qty + 1 } : { name, price, qty: 1 };
